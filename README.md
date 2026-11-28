@@ -8,9 +8,9 @@ Independent Applied AI Research Initiative by [Venkatkumar Rajan](https://github
 
 Arikizui Lab is the umbrella for three areas of work:
 
-- **Ant Intelligence Ecosystem** -- seven open-source Python libraries + Ant Studio CLI/SDK for building AI systems
-- **Arikizu OS** -- edge-first AI runtime that runs locally without cloud dependency
-- **Spatial Intelligence** -- 3D computer vision, visual localization, and Atlas Geo Intelligence
+- **Ant Intelligence Ecosystem**:  seven open-source Python libraries + Ant Studio CLI/SDK for building AI systems
+- **Arikizu OS** : edge-first AI runtime that runs locally without cloud dependency
+- **Spatial Intelligence**: 3D computer vision, visual localization, and Atlas Geo Intelligence
 
 ---
 
