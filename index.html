@@ -3679,6 +3679,21 @@ Atlas - Geo Intelligence is currently under active development as part of Arikiz
   </a>
 </div>
 
+<h2 class="sh" id="at-new">Newest Features</h2>
+<p class="pr">Two new map pages built on a realistic 3D globe (CesiumJS with a free Esri satellite base, free Cesium World Terrain, and optional free Google Photorealistic 3D Tiles).</p>
+
+<h3 class="ssh" id="at-flood">Flood Watch: Dams and Flood Risk for India</h3>
+<p class="pr">A dam and flood-risk map for India. Search all-India for its major dams, or a state or district for every dam there, pulled live from OpenStreetMap. Each dam shows as a node on the map and in a side list.</p>
+<p class="pr"><strong>Click a dam</strong> and Atlas names its flood-risk level (HIGH, MODERATE or LOW) and draws a risk-zone ring, works out which lower-lying towns sit downstream and ranks the areas most at risk (1st, 2nd, 3rd) with how far below and how far downstream each one is, draws a water track from the dam to each area with animated flow particles, and shows the dam's history and photo fetched live from Wikipedia.</p>
+<p class="pr"><strong>Forecast:</strong> A side panel shows a 7-day rainfall forecast from Open-Meteo for the region, the same signal the WavQWise time-series engine forecasts on. A Default / Google Photoreal 3D toggle switches the base map.</p>
+<p class="pr"><strong>Data, all free and keyless:</strong> dams, rivers and places from OpenStreetMap / Overpass; elevation and rainfall from Open-Meteo; dam history and images from Wikipedia; the 3D map from CesiumJS. Downstream impact is an elevation model, not full hydrology, and the all-India list covers major dams at indicative locations. Illustrative, not an operational forecast.</p>
+
+<h3 class="ssh" id="at-climate">Climate Lens: Climate-Action Priority on the Ground</h3>
+<p class="pr">A realistic 3D climate-priority map. Type a place at any level and Atlas covers the whole of it: a state gets coarse cells across every district, a district gets cells across the district, a city or locality gets fine cells. Each cell is scored 0 to 100 for climate-action priority and draped on the ground as a coloured tile.</p>
+<p class="pr"><strong>Controls:</strong> Switch the layer (priority, heat, sealed ground, greenery, people) from the top. Pick a square or circle footprint and set coverage to 5 km, 10 km, or the full district.</p>
+<p class="pr"><strong>Click a cell</strong> and a readout shows its score and its five drivers (heat exposure, impervious surface, vegetation deficit, population exposure, social vulnerability), key statistics, and the cell's real place name. The camera frames that patch from above and marks it with a glowing border so you see the real ground inside it.</p>
+<p class="pr"><strong>Data, all free and keyless:</strong> greenery, tree canopy and sealed ground from ESA WorldCover 10m (measured); surface temperature from the Landsat Collection 2 Level-2 product read through Microsoft Planetary Computer (measured, with a transparent estimate fallback); population a transparent estimate from built-up density; place names from Nominatim. Each driver is tagged measured or estimated in the panel.</p>
+
 <h2 class="sh" id="at-principles">Design Principles</h2>
 <div class="table-wrap"><table>
 <thead><tr><th>Principle</th><th>What It Means</th></tr></thead>
@@ -3696,7 +3711,7 @@ Atlas - Geo Intelligence is currently under active development as part of Arikiz
 <thead><tr><th>Surface</th><th>Description</th></tr></thead>
 <tbody>
 <tr><td><strong>The Assistant</strong></td><td>Main voice-and-text application with the 3D globe. Ask anything by voice or text. Vite-bundled, served as <code>index.html</code>.</td></tr>
-<tr><td><strong>Tool Pages</strong></td><td>Each focuses on one capability (Places, Reach, Transport, Detect, Dams, Crops, Farming, Hazards). Load <code>change-tool.js</code> directly.</td></tr>
+<tr><td><strong>Tool Pages</strong></td><td>Each focuses on one capability (Places, Reach, Transport, Detect, Dams, Crops, Farming, Hazards, Climate, Flood). Load <code>change-tool.js</code> directly.</td></tr>
 </tbody>
 </table></div>
 <p class="pr">Both call the same browser-side tool modules (<code>window.Atlas*</code>) and the same backend endpoints, so a question behaves identically wherever it is asked.</p>
@@ -3772,6 +3787,9 @@ Atlas - Geo Intelligence is currently under active development as part of Arikiz
 <tr><td><strong>Wikidata</strong></td><td>Official language of a place via SPARQL query.</td><td>CC0</td></tr>
 <tr><td><strong>ESA WorldCover</strong></td><td>Global 10m land-cover map, read as COGs from public S3.</td><td>CC BY 4.0</td></tr>
 <tr><td><strong>Sentinel-2 (Earth Search STAC)</strong></td><td>Multi-band satellite imagery for change detection, read band-by-band.</td><td>Copernicus Open</td></tr>
+<tr><td><strong>Landsat C2 L2 (Microsoft Planetary Computer)</strong></td><td>Surface-temperature product for the Climate Lens heat layer, read keyless with no AWS.</td><td>USGS / open</td></tr>
+<tr><td><strong>Open-Meteo</strong></td><td>Elevation and the 7-day rainfall forecast behind Flood Watch.</td><td>CC BY 4.0</td></tr>
+<tr><td><strong>Google Photorealistic 3D Tiles (Cesium ion)</strong></td><td>Optional free Google Earth style base on the Globe, Assistant and Flood pages.</td><td>Free tier</td></tr>
 <tr><td><strong>OSRM</strong></td><td>Driving route, distance and time between two points.</td><td>ODbL / BSD</td></tr>
 <tr><td><strong>CesiumJS</strong></td><td>3D globe and optional photorealistic tiles. Free tier.</td><td>Apache-2.0</td></tr>
 </tbody>
@@ -3791,6 +3809,8 @@ Atlas - Geo Intelligence is currently under active development as part of Arikiz
 <tr><td>Change</td><td>Cloud removes part of a scene. Satellite read, not a survey.</td></tr>
 <tr><td>Detect</td><td>10m squares miss small features. Districts read coarser.</td></tr>
 <tr><td>Route</td><td>For display, not live navigation. No traffic, tolls, or closures.</td></tr>
+<tr><td>Flood</td><td>Downstream risk is an elevation model, not full hydrology. Dam list covers major dams at indicative points. Illustrative, not an operational forecast.</td></tr>
+<tr><td>Climate</td><td>The priority score is an index, not ground truth. Population is estimated. The panel marks each driver measured or estimated.</td></tr>
 </tbody>
 </table></div>
 <p class="pr">Each of these is stated in the product itself, not hidden in documentation.</p>
@@ -3812,6 +3832,8 @@ Atlas - Geo Intelligence is currently under active development as part of Arikiz
         <span class="video-tag">Local-first</span>
         <span class="video-tag">Voice AI</span>
         <span class="video-tag">Satellite</span>
+        <span class="video-tag">Climate Lens</span>
+        <span class="video-tag">Flood Watch</span>
       </div>
     </div>
   </div>
